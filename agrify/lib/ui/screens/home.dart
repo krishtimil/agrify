@@ -23,9 +23,13 @@ class _MyHomeState extends State<MyHome> {
         return HomePage(isLoggedIn: isLoggedIn);
         break;
       case 1:
-        return Container( child: Text('Cart'),);
+        return Container(
+          child: Text('Cart'),
+        );
       case 2:
-        return Container(child: Text('Weather'),);
+        return Container(
+          child: Text('Weather'),
+        );
       default:
     }
     return Container();
@@ -102,7 +106,7 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Hi, ${isLoggedIn ? "Nishant" : "Agriculturist!"}',
+                      'Namaste, ${isLoggedIn ? "Nishant" : "Agriculturist!"}',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 24,

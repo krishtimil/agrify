@@ -4,10 +4,7 @@ import '../utilities/colors.dart';
 
 class WeatherCard extends StatelessWidget {
   final String weatherFace;
-  const WeatherCard({
-    super.key,
-    required this.weatherFace,
-  });
+  const WeatherCard({super.key, required this.weatherFace, r});
 
   @override
   Widget build(BuildContext context) {
