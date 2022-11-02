@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         '/register': (context) => MyRegister(),
         '/login': ((context) => MyLogin()),
         '/home': (context) => HomeScreen(),
-        '/404' :(context) => const NotFoundScreen()
+        '/404': (context) => const NotFoundScreen()
       },
       onUnknownRoute: (settings) {
         Navigator.pushNamed(context, '/404');
