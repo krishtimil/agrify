@@ -1,3 +1,4 @@
+import 'package:agrify/logic/controllers/auth_methods.dart';
 import 'package:agrify/ui/screens/404.dart';
 import 'package:agrify/ui/screens/home.dart';
 import 'package:agrify/ui/utilities/font_style.dart';

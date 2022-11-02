@@ -1,4 +1,6 @@
+import 'package:agrify/logic/controllers/auth_methods.dart';
 import 'package:agrify/ui/components/weather_card.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../utilities/colors.dart';
 import '../utilities/constant.dart';
@@ -8,6 +10,7 @@ class MyHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+  bool isLoggedIn = AuthMethods().authState;
     return Scaffold(
       backgroundColor: kPrimarySwatch,
       bottomNavigationBar: BottomNavigationBar(items: [
@@ -56,9 +59,14 @@ class MyHome extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       padding: EdgeInsets.all(12),
-                      child: Icon(
-                        Icons.login,
-                        color: Colors.white,
+                      child: isLoggedIn? CircleAvatar(): IconButton(
+                        onPressed: () async {
+                          Navigator.pushReplacementNamed(context, '/login');
+                        },
+                        icon: Icon(
+                          Icons.login,
+                          color: Colors.white,
+                        ),
                       ),
                     )
                   ],
