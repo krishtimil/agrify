@@ -1,6 +1,7 @@
 import 'package:agrify/ui/components/market_tile.dart';
 import 'package:agrify/logic/controllers/auth_methods.dart';
 import 'package:agrify/ui/components/weather_card.dart';
+import 'package:agrify/ui/screens/weather_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../utilities/colors.dart';
@@ -23,9 +24,11 @@ class _MyHomeState extends State<MyHome> {
         return HomePage(isLoggedIn: isLoggedIn);
         break;
       case 1:
-        return Container( child: Text('Cart'),);
+        return Container(
+          child: Text('Cart'),
+        );
       case 2:
-        return Container(child: Text('Weather'),);
+        return WeatherPage();
       default:
     }
     return Container();
@@ -128,7 +131,10 @@ class HomePage extends StatelessWidget {
                   ),
                   padding: EdgeInsets.all(12),
                   child: isLoggedIn
-                      ? CircleAvatar()
+                      ? GestureDetector(
+                          child: CircleAvatar(),
+                          onTap: () => Navigator.pushNamed(context, '/profile'),
+                        )
                       : IconButton(
                           onPressed: () async {
                             Navigator.pushReplacementNamed(context, '/login');
@@ -138,7 +144,7 @@ class HomePage extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
-                )
+                ),
               ],
             ),
 

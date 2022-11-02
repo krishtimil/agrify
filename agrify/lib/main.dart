@@ -3,6 +3,9 @@ import 'package:agrify/logic/controllers/firestore_methods.dart';
 import 'package:agrify/logic/controllers/storage_methods.dart';
 import 'package:agrify/ui/screens/404.dart';
 import 'package:agrify/ui/screens/home.dart';
+import 'package:agrify/ui/screens/plan_screen.dart';
+import 'package:agrify/ui/screens/profile.dart';
+import 'package:agrify/ui/screens/yard_planning.dart';
 import 'package:agrify/ui/utilities/font_style.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -25,12 +28,14 @@ class MyApp extends StatelessWidget {
         textTheme: textTheme,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
+      initialRoute: '/yard',
       routes: {
         '/register': (context) => const MyRegister(),
         '/login': ((context) => const MyLogin()),
         '/home': (context) => const MyHome(),
-        '/404': (context) => const NotFoundScreen()
+        '/404': (context) => const NotFoundScreen(),
+        '/profile':(context) => const ProfileScreen(),
+        '/yard':(context) => const YardPlanningScreen(),
       },
       onUnknownRoute: (settings) {
         Navigator.pushNamed(context, '/404');
