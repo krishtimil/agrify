@@ -1,16 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import './ui/screens/login.dart';
+import './ui/screens/register.dart';
+
 void main() {
-  runApp(MyApp());
-}
-
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: const MyLogin(),
+    routes: {
+      'register': (context) => const MyRegister(),
+      'login': (context) => const MyLogin(),
+    },
+  ));
 }
