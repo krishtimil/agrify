@@ -1,6 +1,8 @@
 import 'package:agrify/ui/screens/home.dart';
 import 'package:agrify/ui/utilities/font_style.dart';
 import 'package:flutter/material.dart';
+import 'package:agrify/ui/screens/login.dart';
+import 'package:agrify/ui/screens/register.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +18,11 @@ class MyApp extends StatelessWidget {
         textTheme: textTheme,
       ),
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+      initialRoute: 'login',
+      routes: {
+        'register': (context) => MyRegister(),
+        'login': ((context) => MyLogin()),
+      },
     );
   }
 }
