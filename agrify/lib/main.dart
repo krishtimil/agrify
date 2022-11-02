@@ -1,12 +1,14 @@
+import 'package:agrify/ui/screens/404.dart';
 import 'package:agrify/ui/screens/home.dart';
 import 'package:agrify/ui/utilities/font_style.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:agrify/ui/screens/login.dart';
 import 'package:agrify/ui/screens/register.dart';
 
-import './ui//screens/home2.dart';
-
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -20,11 +22,15 @@ class MyApp extends StatelessWidget {
         textTheme: textTheme,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: 'home',
+      initialRoute: '/register',
       routes: {
-        'home': (context) => MyHome(),
-        'register': (context) => MyRegister(),
-        'login': ((context) => MyLogin()),
+        '/register': (context) => MyRegister(),
+        '/login': ((context) => MyLogin()),
+        '/home': (context) => HomeScreen(),
+        '/404': (context) => const NotFoundScreen()
+      },
+      onUnknownRoute: (settings) {
+        Navigator.pushNamed(context, '/404');
       },
     );
   }
