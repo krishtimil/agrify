@@ -18,10 +18,11 @@ class MyApp extends StatelessWidget {
         textTheme: textTheme,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: 'login',
+      initialRoute: '/login',
       routes: {
-        'register': (context) => MyRegister(),
-        'login': ((context) => MyLogin()),
+        '/register': (context) => MyRegister(),
+        '/login': ((context) => MyLogin()),
+        '/home' :(context) =>  HomeScreen(),
       },
     );
   }
