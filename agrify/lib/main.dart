@@ -22,11 +22,11 @@ class MyApp extends StatelessWidget {
         textTheme: textTheme,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/register',
+      initialRoute: '/home',
       routes: {
-        '/register': (context) => MyRegister(),
-        '/login': ((context) => MyLogin()),
-        '/home': (context) => HomeScreen(),
+        '/register': (context) => const MyRegister(),
+        '/login': ((context) => const MyLogin()),
+        '/home': (context) => const MyHome(),
         '/404': (context) => const NotFoundScreen()
       },
       onUnknownRoute: (settings) {
