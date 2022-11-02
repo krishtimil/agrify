@@ -81,7 +81,7 @@ class _MyLoginState extends State<MyLogin> {
                             borderColor: kPrimarySwatch,
                             controller: emailController,
                           ),
-                          SizedBox(
+                          spacer(
                             height: 30,
                           ),
                           TextInputField(
@@ -89,7 +89,7 @@ class _MyLoginState extends State<MyLogin> {
                             borderColor: kPrimarySwatch,
                             controller: passwordController,
                           ),
-                          SizedBox(
+                          spacer(
                             height: 40,
                           ),
                           Row(
@@ -109,15 +109,15 @@ class _MyLoginState extends State<MyLogin> {
                                   icon: isClicked
                                       ? const CircularProgressIndicator(
                                           color: kWhiteColor,
-                                        ) : const Icon(
-                                          Icons.arrow_forward,
                                         )
-                                      ,
+                                      : const Icon(
+                                          Icons.arrow_forward,
+                                        ),
                                 ),
                               )
                             ],
                           ),
-                          SizedBox(
+                          spacer(
                             height: 40,
                           ),
                           Row(
@@ -125,7 +125,7 @@ class _MyLoginState extends State<MyLogin> {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  Navigator.pushNamed(context, 'register');
+                                  Navigator.pushNamed(context, '/register');
                                 },
                                 child: Text(
                                   'Sign Up',

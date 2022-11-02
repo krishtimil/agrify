@@ -1,7 +1,9 @@
+import 'package:agrify/logic/controllers/firestore_methods.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthMethods {
   final _auth = FirebaseAuth.instance;
+  final _firestoreMethods = FirestoreMethods();
 
   final Map<String, String> errorCodes = {
     'wrong-passord':
@@ -26,5 +28,32 @@ class AuthMethods {
     } on FirebaseAuthException catch (e) {
       return errorCodes[e.code] ?? 'Failed! Check your credientials';
     }
+  }
+
+  Future<String> registerMethod(
+      {required String email,
+      required String name,
+      required String phone,
+      required String password}) async {
+    try {
+      UserCredential crediential = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      if (crediential.user!.uid.isNotEmpty) {
+        await _firestoreMethods.storeUserInfo(
+            name: name,
+            email: email,
+            password: password,
+            phone: phone,
+            uid: AuthMethods().gerUserId);
+        return 'success';
+      }
+      return 'failed';
+    } on FirebaseAuthException catch (e) {
+      return errorCodes[e] ?? 'Failed. Check your credientials';
+    }
+  }
+
+  String get gerUserId {
+    return _auth.currentUser!.uid;
   }
 }

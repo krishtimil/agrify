@@ -1,3 +1,4 @@
+import 'package:agrify/ui/screens/404.dart';
 import 'package:agrify/ui/screens/home.dart';
 import 'package:agrify/ui/utilities/font_style.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,11 +22,15 @@ class MyApp extends StatelessWidget {
         textTheme: textTheme,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/login',
+      initialRoute: '/register',
       routes: {
         '/register': (context) => MyRegister(),
         '/login': ((context) => MyLogin()),
         '/home': (context) => HomeScreen(),
+        '/404' :(context) => const NotFoundScreen()
+      },
+      onUnknownRoute: (settings) {
+        Navigator.pushNamed(context, '/404');
       },
     );
   }
