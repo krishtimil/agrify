@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "317236370986",
+    "project_id": "agrify-utc",
+    "storage_bucket": "agrify-utc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317236370986:android:303faeacfaa60d58b62d53",
+        "android_client_info": {
+          "package_name": "com.agrify.agrify.agrify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "317236370986-13mtj6a3ro4utohh75p7r2b37o5vpemg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6_oFwK4-yrso-U65sEOi-aS8KAQI4_Hw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "317236370986-13mtj6a3ro4utohh75p7r2b37o5vpemg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -9,9 +9,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: kPrimarySwatch,
         title: Row(
-          children: [Text('Agrify')],
+          children: [
+            Text('Agrify'),
+          ],
         ),
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.notifications)),
@@ -40,12 +43,20 @@ class HomeScreen extends StatelessWidget {
                 spacer(height: 20),
                 Container(
                   padding: const EdgeInsets.only(left: 20),
-                  decoration: BoxDecoration(color: Colors.black.withOpacity(0.1)),
+                  decoration:
+                      BoxDecoration(color: Colors.black.withOpacity(0.1)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('Weather Forecast', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),),
-                      IconButton(onPressed: (){}, icon: const Icon(Icons.arrow_forward_ios_rounded),),
+                      const Text(
+                        'Weather Forecast',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w600),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.arrow_forward_ios_rounded),
+                      ),
                     ],
                   ),
                 )

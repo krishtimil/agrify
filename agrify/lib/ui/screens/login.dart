@@ -1,4 +1,6 @@
+import 'package:agrify/logic/controllers/auth_methods.dart';
 import 'package:agrify/ui/utilities/colors.dart';
+import 'package:agrify/ui/utilities/constant.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'register.dart';
@@ -14,6 +16,24 @@ class MyLogin extends StatefulWidget {
 class _MyLoginState extends State<MyLogin> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final AuthMethods _authMethods = AuthMethods();
+  bool isClicked = false;
+  void login() async {
+    setState(() {
+      isClicked = !isClicked;
+    });
+    String response = await _authMethods.loginMethod(
+      email: emailController.text,
+      password: passwordController.text,
+    );
+    if (response == 'success') {
+      Navigator.pushNamed(context, '/home');
+    }
+    showSnackbar(response, context);
+    setState(() {
+      isClicked = !isClicked;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,16 +81,6 @@ class _MyLoginState extends State<MyLogin> {
                             borderColor: kPrimarySwatch,
                             controller: emailController,
                           ),
-                          // TextField(
-                          //   style: TextStyle(color: Colors.black),
-                          //   decoration: InputDecoration(
-                          //       fillColor: Colors.grey.shade100,
-                          //       filled: true,
-                          //       hintText: "Email",
-                          //       border: OutlineInputBorder(
-                          //         borderRadius: BorderRadius.circular(10),
-                          //       )),
-                          // ),
                           SizedBox(
                             height: 30,
                           ),
@@ -79,43 +89,31 @@ class _MyLoginState extends State<MyLogin> {
                             borderColor: kPrimarySwatch,
                             controller: passwordController,
                           ),
-                          // TextField(
-                          //   style: TextStyle(),
-                          //   obscureText: true,
-                          //   decoration: InputDecoration(
-                          //       fillColor: Colors.grey.shade100,
-                          //       filled: true,
-                          //       hintText: "Password",
-                          //       border: OutlineInputBorder(
-                          //         borderRadius: BorderRadius.circular(10),
-                          //       )),
-                          // ),
                           SizedBox(
                             height: 40,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
+                              const Text(
                                 'Sign in',
                                 style: TextStyle(
                                     fontSize: 27, fontWeight: FontWeight.w700),
                               ),
                               CircleAvatar(
                                 radius: 30,
-                                backgroundColor: Color(0xff4c505b),
+                                backgroundColor: kPrimarySwatch,
                                 child: IconButton(
-                                    color: Colors.white,
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  MyRegister()));
-                                    },
-                                    icon: Icon(
-                                      Icons.arrow_forward,
-                                    )),
+                                  color: Colors.white,
+                                  onPressed: login,
+                                  icon: isClicked
+                                      ? const CircularProgressIndicator(
+                                          color: kWhiteColor,
+                                        ) : const Icon(
+                                          Icons.arrow_forward,
+                                        )
+                                      ,
+                                ),
                               )
                             ],
                           ),
