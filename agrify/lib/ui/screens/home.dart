@@ -3,6 +3,8 @@ import 'package:agrify/logic/controllers/auth_methods.dart';
 import 'package:agrify/ui/components/weather_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import './weatherHomePage.dart';
 import '../utilities/colors.dart';
 import '../utilities/constant.dart';
 
@@ -27,9 +29,7 @@ class _MyHomeState extends State<MyHome> {
           child: Text('Cart'),
         );
       case 2:
-        return Container(
-          child: Text('Weather'),
-        );
+        return WeatherPage();
       default:
     }
     return Container();
