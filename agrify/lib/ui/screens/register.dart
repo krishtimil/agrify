@@ -121,7 +121,7 @@ class _MyRegisterState extends State<MyRegister> {
                                     fontSize: 27,
                                     fontWeight: FontWeight.w700),
                               ),
-                              CircleAvatar(
+                              isClicked? CircularProgressIndicator(): CircleAvatar(
                                 radius: 30,
                                 backgroundColor: kPrimarySwatch,
                                 child: IconButton(

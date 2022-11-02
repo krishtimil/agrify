@@ -10,14 +10,17 @@ class MyHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  bool isLoggedIn = AuthMethods().authState;
+    bool isLoggedIn = AuthMethods().authState;
+    
     return Scaffold(
       backgroundColor: kPrimarySwatch,
-      bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-      ]),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
+        ],
+      ),
       body: SafeArea(
         child: Column(children: [
           // grettings row
@@ -34,7 +37,7 @@ class MyHome extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Hi, Jared!',
+                          'Hi, ${isLoggedIn?  "Nishant": "Agriculturist!"}',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 24,
@@ -59,15 +62,18 @@ class MyHome extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                       padding: EdgeInsets.all(12),
-                      child: isLoggedIn? CircleAvatar(): IconButton(
-                        onPressed: () async {
-                          Navigator.pushReplacementNamed(context, '/login');
-                        },
-                        icon: Icon(
-                          Icons.login,
-                          color: Colors.white,
-                        ),
-                      ),
+                      child: isLoggedIn
+                          ? CircleAvatar()
+                          : IconButton(
+                              onPressed: () async {
+                                Navigator.pushReplacementNamed(
+                                    context, '/login');
+                              },
+                              icon: const Icon(
+                                Icons.login,
+                                color: Colors.white,
+                              ),
+                            ),
                     )
                   ],
                 ),

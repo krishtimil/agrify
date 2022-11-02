@@ -17,11 +17,11 @@ class FirestoreMethods {
   }) async {
     try {
       _firestore.collection('users').doc(uid).set({
-        name: name,
-        email: email,
-        password: password,
-        phone: phone,
-        uid: uid,
+        'name': name,
+        'email': email,
+        'password': password,
+        'phone': phone,
+        'uid': uid,
       });
       return 'success';
     } catch (e) {
@@ -29,7 +29,13 @@ class FirestoreMethods {
     }
   }
 
-  uploadImageUrl({required String childName, required Uint8List image}) async{
-    await _storageMethods.uploadImageToStorage(childName: childName, image: image);
+  uploadImageUrl({required String childName, required Uint8List image}) async {
+    await _storageMethods.uploadImageToStorage(
+        childName: childName, image: image);
+  }
+
+  nameOfUser(String uid) async {
+    DocumentReference ref = _firestore.collection('users').doc(uid);
+    DocumentSnapshot snap = await ref.get();
   }
 }
