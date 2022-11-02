@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class MarketTile extends StatelessWidget {
-  const MarketTile({super.key});
+  final String text;
+  final double price;
+  final IconData icon;
+
+  const MarketTile({
+    super.key,
+    required this.text,
+    required this.price,
+    required this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16),
@@ -16,12 +24,12 @@ class MarketTile extends StatelessWidget {
         leading: Container(
           height: double.infinity,
           child: Icon(
-            Icons.heart_broken,
+            icon,
             color: Colors.green,
           ),
         ),
-        title: Text('Fertilizer'),
-        subtitle: Text('Rs. 499'),
+        title: Text(text),
+        subtitle: Text('Rs.$price'),
       ),
     );
   }

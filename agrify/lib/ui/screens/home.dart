@@ -132,7 +132,13 @@ class HomePage extends StatelessWidget {
                   ),
                   padding: EdgeInsets.all(12),
                   child: isLoggedIn
-                      ? CircleAvatar()
+                      ? GestureDetector(
+                          child: CircleAvatar(),
+                          onTap: () async {
+                            await FirebaseAuth.instance.signOut();
+                            Navigator.pushReplacementNamed(context, '/login');
+                          },
+                        )
                       : IconButton(
                           onPressed: () async {
                             Navigator.pushReplacementNamed(context, '/login');
@@ -209,7 +215,7 @@ class HomePage extends StatelessWidget {
                 Column(
                   children: [
                     WeatherCard(
-                      weatherFace: '🌧️',
+                      weatherFace: '☁️',
                     ),
                     Text(
                       'Yesterday',
@@ -220,7 +226,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Rainy',
+                      'Cloudy',
                       style: TextStyle(color: Colors.white),
                     ),
                   ],
@@ -228,7 +234,7 @@ class HomePage extends StatelessWidget {
                 Column(
                   children: [
                     WeatherCard(
-                      weatherFace: '🌧️',
+                      weatherFace: '☀️',
                     ),
                     Text(
                       'Today',
@@ -239,7 +245,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Rainy',
+                      'Sunny',
                       style: TextStyle(color: Colors.white),
                     ),
                   ],
@@ -269,15 +275,36 @@ class HomePage extends StatelessWidget {
         ),
       ),
 
-      SizedBox(
-        height: 25,
+      Container(
+        margin: EdgeInsets.all(25),
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.red,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Alert! Hailstone Tomorrow!',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 15,
+              ),
+            ),
+            Icon(
+              Icons.close,
+              color: Colors.white,
+            ),
+          ],
+        ),
+        width: double.infinity,
       ),
-
       // weather
 
       Expanded(
         child: Container(
-          padding: EdgeInsets.all(25),
+          padding: EdgeInsets.symmetric(horizontal: 25),
           color: Colors.grey[100],
           child: Center(
             child: SingleChildScrollView(
@@ -297,9 +324,21 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                   spacer(height: 10),
-                  MarketTile(),
-                  MarketTile(),
-                  MarketTile(),
+                  MarketTile(
+                    text: 'Fertilizer',
+                    price: 499,
+                    icon: Icons.home,
+                  ),
+                  MarketTile(
+                    text: 'Grains',
+                    price: 120,
+                    icon: Icons.grain,
+                  ),
+                  MarketTile(
+                    text: 'Sushill',
+                    price: 1,
+                    icon: Icons.person,
+                  ),
                 ],
               ),
             ),
