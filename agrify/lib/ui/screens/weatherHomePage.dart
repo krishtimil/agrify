@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
 
-import './dataset.dart';
+import '../components/dataset.dart';
 import './detailPage.dart';
-import './extraWeather.dart';
+import '../components/extraWeather.dart';
 
 class WeatherPage extends StatelessWidget {
   @override

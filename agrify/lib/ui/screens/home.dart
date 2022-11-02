@@ -3,6 +3,7 @@ import 'package:agrify/logic/controllers/auth_methods.dart';
 import 'package:agrify/ui/components/weather_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import './weatherHomePage.dart';
 import '../utilities/colors.dart';
@@ -117,7 +118,7 @@ class HomePage extends StatelessWidget {
                       height: 8,
                     ),
                     Text(
-                      '23 Jan, 2021',
+                      DateFormat.yMMMd().format(DateTime.now()),
                       style: TextStyle(
                         color: kPrimarySwatch.shade100,
                       ),
