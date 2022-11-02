@@ -2,9 +2,9 @@
 
 A comprehensive solution for farmers and people who want to grow on land, which aims to empower farmers by educating them & helping them make imformed decisions that increases their income.
 
-Agrify aims to act as a brigde between agriculture and technology. Our aim is to make farming not seen as an option ff last resort, but rather a vacation of choice.
+Agrify aims to act as a brigde between agriculture and technology. Our aim is to make farming not seen as an option of last resort, but rather a vacation of choice.
 
-## Contributors
+## Contributors 👨‍💻
 ```
 Nishant Pokhrel             
 Krishant Timilsina   
