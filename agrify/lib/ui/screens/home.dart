@@ -1,3 +1,4 @@
+import 'package:agrify/ui/components/market_tile.dart';
 import 'package:agrify/ui/components/weather_card.dart';
 import 'package:flutter/material.dart';
 import '../utilities/colors.dart';
@@ -10,11 +11,35 @@ class MyHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kPrimarySwatch,
-      bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-      ]),
+      bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+                color: kPrimarySwatch,
+              ),
+              label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.shopping_cart,
+                color: kPrimarySwatch,
+              ),
+              label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.cloudy_snowing,
+                color: kPrimarySwatch,
+              ),
+              label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.comment,
+                color: kPrimarySwatch,
+              ),
+              label: '')
+        ],
+      ),
       body: SafeArea(
         child: Column(children: [
           // grettings row
@@ -213,12 +238,10 @@ class MyHome extends StatelessWidget {
                         Icon(Icons.arrow_forward_ios),
                       ],
                     ),
-                    spacer(height: 20),
-                    // Container(
-                    //   child: ListTile(
-                    //     leading: Icons(Icons.apple),
-                    //   ),
-                    // ),
+                    spacer(height: 10),
+                    MarketTile(),
+                    MarketTile(),
+                    MarketTile(),
                   ],
                 ),
               ),
