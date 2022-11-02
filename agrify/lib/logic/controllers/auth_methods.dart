@@ -56,4 +56,12 @@ class AuthMethods {
   String get gerUserId {
     return _auth.currentUser!.uid;
   }
+
+  bool get authState{
+    if (_auth.currentUser != null) {
+      return true;
+    }
+    return false;
+  }
+  
 }
