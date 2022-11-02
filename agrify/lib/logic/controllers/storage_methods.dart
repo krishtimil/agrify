@@ -1,7 +1,7 @@
 class StorageMethods{
 
   storeImage(){
-
+    
   }
 
 }
