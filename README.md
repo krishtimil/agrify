@@ -12,7 +12,10 @@ Sushill Adhikari
 ```
 
 ## Screenshot
-![](agrify/assets/screen.png)
+![](agrify/assets/screen.png )
+![](agrify/assets/screen1.png )
+![](agrify/assets/screen2.png )
+
 
 
 ## 🔨 Build
