@@ -1,3 +1,4 @@
+import 'package:agrify/ui/components/market_tile.dart';
 import 'package:agrify/logic/controllers/auth_methods.dart';
 import 'package:agrify/ui/components/weather_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -15,10 +16,32 @@ class MyHome extends StatelessWidget {
     return Scaffold(
       backgroundColor: kPrimarySwatch,
       bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+                color: kPrimarySwatch,
+              ),
+              label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.shopping_cart,
+                color: kPrimarySwatch,
+              ),
+              label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.cloudy_snowing,
+                color: kPrimarySwatch,
+              ),
+              label: ''),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.comment,
+                color: kPrimarySwatch,
+              ),
+              label: '')
         ],
       ),
       body: SafeArea(
@@ -227,12 +250,10 @@ class MyHome extends StatelessWidget {
                         Icon(Icons.arrow_forward_ios),
                       ],
                     ),
-                    spacer(height: 20),
-                    // Container(
-                    //   child: ListTile(
-                    //     leading: Icons(Icons.apple),
-                    //   ),
-                    // ),
+                    spacer(height: 10),
+                    MarketTile(),
+                    MarketTile(),
+                    MarketTile(),
                   ],
                 ),
               ),
