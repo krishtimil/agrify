@@ -14,32 +14,34 @@ class MarketPlace extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 25),
         child: Column(
           children: [
-            Column(
+            Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(
-                  'Marketplace',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Column(
+                  children: [
+                    Text(
+                      'Marketplace',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 8,
+                    ),
+                    Text(
+                      'Your Place to Sell/Buy',
+                      style: TextStyle(
+                        color: kPrimarySwatch.shade100,
+                      ),
+                    )
+                  ],
                 ),
-                SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  'Your Place to Sell/Buy',
-                  style: TextStyle(
-                    color: kPrimarySwatch.shade100,
-                  ),
-                )
               ],
             ),
 
-            SizedBox(
-              height: 28,
-            ),
+            spacer(height: 20),
 
             //search bar
             Container(
