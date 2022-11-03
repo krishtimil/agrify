@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         '/404': (context) => const NotFoundScreen(),
         '/profile': (context) => const ProfileScreen(),
         '/yard': (context) => const YardPlanner(),
-        '/tracker':(context) => SaleTracker()
+        '/tracker': (context) => SaleTracker()
       },
       onUnknownRoute: (settings) {
         Navigator.pushNamed(context, '/404');
