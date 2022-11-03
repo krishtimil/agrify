@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:agrify/l10n/app_en.dart';
+import 'package:agrify/logic/services/shared_prefs.dart';
 import 'package:agrify/ui/components/market_tile.dart';
 import 'package:agrify/logic/controllers/auth_methods.dart';
 import 'package:agrify/ui/components/weather_card.dart';
@@ -191,6 +193,35 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool isClosed = false;
+  bool getlang = false;
+  Map localEng = localizedStrings['english'];
+  Map localNep = localizedStrings['nepali'];
+
+  bool isSwitched = false;
+
+  void toggleSwitch(bool value) async {
+    if (isSwitched == false) {
+      setState(() {
+        isSwitched = true;
+        SharedPrefs().setBoolean(true);
+      });
+    } else {
+      setState(() {
+        isSwitched = false;
+        SharedPrefs().setBoolean(false);
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    langManager();
+    super.initState();
+  }
+
+  langManager() async {
+    getlang = await SharedPrefs().getLang;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -209,7 +240,9 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Namaste, ${widget.isLoggedIn ? "Nishant" : "Agriculturist!"}',
+                      getlang
+                          ? localizedStrings['english']['hello']
+                          : localizedStrings['nepali']['hello'],
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 22,
@@ -234,23 +267,33 @@ class _HomePageState extends State<HomePage> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   padding: EdgeInsets.all(12),
-                  child: widget.isLoggedIn
-                      ? GestureDetector(
-                          child: CircleAvatar(),
-                          onTap: () async {
-                            await FirebaseAuth.instance.signOut();
-                            Navigator.pushReplacementNamed(context, '/login');
-                          })
-                      : IconButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/login');
-                          },
-                          icon: const Icon(
-                            Icons.login,
-                            color: Colors.white,
+                  child: Row(children: [
+                    widget.isLoggedIn
+                        ? GestureDetector(
+                            child: CircleAvatar(),
+                            onTap: () async {
+                              await FirebaseAuth.instance.signOut();
+                              Navigator.pushReplacementNamed(context, '/login');
+                            })
+                        : IconButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/login');
+                            },
+                            icon: const Icon(
+                              Icons.login,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                ),
+                    Switch(
+                      onChanged: toggleSwitch,
+                      value: isSwitched,
+                      activeColor: Colors.blue,
+                      activeTrackColor: Colors.yellow,
+                      inactiveThumbColor: Colors.redAccent,
+                      inactiveTrackColor: Colors.orange,
+                    )
+                  ]),
+                )
               ],
             ),
 
@@ -272,7 +315,7 @@ class _HomePageState extends State<HomePage> {
                     width: 10,
                   ),
                   Text(
-                    'Search',
+                    getlang ? localEng['search'] : localNep['search'],
                     style: TextStyle(
                       color: Colors.white,
                     ),
@@ -290,7 +333,9 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Weather Updates',
+                  getlang
+                      ? localizedStrings['english']['weatherUpdates']
+                      : localizedStrings['nepali']['weatherUpdates'],
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 22,
@@ -318,7 +363,7 @@ class _HomePageState extends State<HomePage> {
                       weatherFace: '☁️',
                     ),
                     Text(
-                      'Yesterday',
+                      getlang ? localEng['yesterday'] : localNep['yesterday'],
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -326,7 +371,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Text(
-                      'Cloudy',
+                      getlang ? localEng['cloudy'] : localNep['cloudy'],
                       style: TextStyle(color: Colors.white),
                     ),
                   ],
@@ -337,7 +382,7 @@ class _HomePageState extends State<HomePage> {
                       weatherFace: '☀️',
                     ),
                     Text(
-                      'Today',
+                      getlang ? localEng['today'] : localNep['today'],
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -345,7 +390,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Text(
-                      'Sunny',
+                      getlang ? localEng['sunny'] : localNep['sunny'],
                       style: TextStyle(color: Colors.white),
                     ),
                   ],
@@ -356,7 +401,7 @@ class _HomePageState extends State<HomePage> {
                       weatherFace: '🌧️',
                     ),
                     Text(
-                      'Tommorrow',
+                      getlang ? localEng['tomorrow'] : localNep['tomorrow'],
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -364,7 +409,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Text(
-                      'Rainy',
+                      getlang ? localEng['rainy'] : localNep['rainy'],
                       style: TextStyle(color: Colors.white),
                     ),
                   ],
@@ -389,7 +434,7 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Alert! Hailstone Tomorrow!',
+                    getlang ? localEng['hailstone'] : localNep['hailstone'],
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 15,
@@ -425,7 +470,9 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'MarketPlace',
+                        getlang
+                            ? localEng['marketplace']
+                            : localNep['marketplace'],
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -439,17 +486,19 @@ class _HomePageState extends State<HomePage> {
                   ),
                   spacer(height: 10),
                   MarketTile(
-                    text: 'Fertilizer',
+                    text: getlang
+                        ? localEng['fertilizer']
+                        : localNep['fertilizer'],
                     price: 499,
                     icon: Icons.home,
                   ),
                   MarketTile(
-                    text: 'Grains',
+                    text: getlang ? localEng['grains'] : localNep['grains'],
                     price: 120,
                     icon: Icons.grain,
                   ),
                   MarketTile(
-                    text: 'Apple',
+                    text: getlang ? localEng['apple'] : localNep['apple'],
                     price: 100,
                     icon: Icons.apple,
                   ),

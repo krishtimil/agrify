@@ -140,7 +140,7 @@ class _ScannerState extends State<Scanner> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: ((context) => const CheckDisease()),
+                            builder: ((context) => CheckDisease(plantName: _nameController.text,)),
                           ),
                         );
                       } else {

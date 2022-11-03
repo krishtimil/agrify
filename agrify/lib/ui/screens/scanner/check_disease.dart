@@ -7,16 +7,26 @@ import 'package:flutter/material.dart';
 
 import '../../utilities/colors.dart';
 
-class CheckDisease extends StatelessWidget {
+class CheckDisease extends StatefulWidget {
   const CheckDisease({super.key, this.plantName = '', this.image});
 
   final String plantName;
   final Uint8List? image;
 
   @override
+  State<CheckDisease> createState() => _CheckDiseaseState();
+}
+
+class _CheckDiseaseState extends State<CheckDisease> {
+  DataModel _disease = DataModel();
+  @override
+  void initState() {
+    _disease = DiseaseModel().recognizeDisease(widget.plantName, widget.image);
+    print('flag: ${_disease.diseaseName}');
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
-    final DataModel _disease =
-        DiseaseModel().recognizeDisease(plantName, image);
     return Scaffold(
       backgroundColor: kPrimarySwatch,
       body: SafeArea(
