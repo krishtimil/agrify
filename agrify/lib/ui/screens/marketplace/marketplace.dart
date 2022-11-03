@@ -17,128 +17,133 @@ class _MarketPlaceState extends State<MarketPlace> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      // grettings row
-      spacer(height: 20),
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+    return Scaffold(
+      backgroundColor: kPrimarySwatch,
+      body: SafeArea(
+        child: Column(children: [
+          // grettings row
+          spacer(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: Column(
               children: [
-                Column(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      'Marketplace',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Column(
+                      children: [
+                        Text(
+                          'Marketplace',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Text(
+                          'Your Place to Sell/Buy',
+                          style: TextStyle(
+                            color: kPrimarySwatch.shade100,
+                          ),
+                        )
+                      ],
                     ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                      'Your Place to Sell/Buy',
-                      style: TextStyle(
-                        color: kPrimarySwatch.shade100,
-                      ),
-                    )
                   ],
                 ),
+
+                spacer(height: 20),
+
+                //search bar
+                Container(
+                  decoration: BoxDecoration(
+                    color: kPrimarySwatch.shade100,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  padding: EdgeInsets.all(12),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.search,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Search',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                spacer(height: 25),
+                isLoggedIn
+                    ? Container(
+                        width: double.infinity,
+                        margin: EdgeInsets.only(bottom: 15),
+                        child: FilledButton(
+                          color: kWhiteColor,
+                          onTap: () {},
+                          text: 'Post Your Ad',
+                          textColor: kPrimarySwatch,
+                        ),
+                      )
+                    : SizedBox(),
+                // weather
               ],
             ),
+          ),
 
-            spacer(height: 20),
-
-            //search bar
-            Container(
-              decoration: BoxDecoration(
-                color: kPrimarySwatch.shade100,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              padding: EdgeInsets.all(12),
-              child: Row(
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+              color: Colors.grey[100],
+              child: GridView(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                    mainAxisExtent: 200),
                 children: [
-                  Icon(
-                    Icons.search,
-                    color: Colors.white,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    'Search',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
+                  CartItemWidget(
+                      url:
+                          'https://th.bing.com/th/id/R.71e83aa43de7160fd0ec14ceb1038656?rik=i%2f3jgmAr6Yxo%2bQ&pid=ImgRaw&r=0&sres=1&sresct=1',
+                      discountedPrice: '1200',
+                      intialPrice: '1400',
+                      title: 'DAP Fertilizer'),
+                  CartItemWidget(
+                      url:
+                          'https://nepalgramodhyog.store/images/products/Sabjiland%20chocolaty%20apple.png',
+                      discountedPrice: '200',
+                      intialPrice: '400',
+                      title: 'Apple'),
+                  CartItemWidget(
+                      url:
+                          'https://www.jbmpackaging.com/wp-content/uploads/2018/09/RetailSeedPackets.png',
+                      discountedPrice: '349',
+                      intialPrice: '499',
+                      title: 'Seeds'),
+                  CartItemWidget(
+                      url:
+                          'https://banner2.cleanpng.com/20180314/ulq/kisspng-insecticide-mosquito-aerosol-spray-bottle-insecticide-spray-bottle-5aa9954103ef49.8461730915210632330162.jpg',
+                      discountedPrice: '999',
+                      intialPrice: '1350',
+                      title: 'DAP Fertilizer'),
                 ],
+                padding: EdgeInsets.all(10),
+                shrinkWrap: true,
               ),
             ),
-
-            spacer(height: 25),
-            isLoggedIn
-                ? Container(
-                    width: double.infinity,
-                    margin: EdgeInsets.only(bottom: 15),
-                    child: FilledButton(
-                      color: kWhiteColor,
-                      onTap: () {},
-                      text: 'Post Your Ad',
-                      textColor: kPrimarySwatch,
-                    ),
-                  )
-                : SizedBox(),
-            // weather
-          ],
-        ),
-      ),
-
-      Expanded(
-        child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-          color: Colors.grey[100],
-          child: GridView(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
-                mainAxisExtent: 200),
-            children: [
-              CartItemWidget(
-                  url:
-                      'https://th.bing.com/th/id/R.71e83aa43de7160fd0ec14ceb1038656?rik=i%2f3jgmAr6Yxo%2bQ&pid=ImgRaw&r=0&sres=1&sresct=1',
-                  discountedPrice: '1200',
-                  intialPrice: '1400',
-                  title: 'DAP Fertilizer'),
-              CartItemWidget(
-                  url:
-                      'https://nepalgramodhyog.store/images/products/Sabjiland%20chocolaty%20apple.png',
-                  discountedPrice: '200',
-                  intialPrice: '400',
-                  title: 'Apple'),
-              CartItemWidget(
-                  url:
-                      'https://www.jbmpackaging.com/wp-content/uploads/2018/09/RetailSeedPackets.png',
-                  discountedPrice: '349',
-                  intialPrice: '499',
-                  title: 'Seeds'),
-              CartItemWidget(
-                  url:
-                      'https://banner2.cleanpng.com/20180314/ulq/kisspng-insecticide-mosquito-aerosol-spray-bottle-insecticide-spray-bottle-5aa9954103ef49.8461730915210632330162.jpg',
-                  discountedPrice: '999',
-                  intialPrice: '1350',
-                  title: 'DAP Fertilizer'),
-            ],
-            padding: EdgeInsets.all(10),
-            shrinkWrap: true,
           ),
-        ),
+        ]),
       ),
-    ]);
+    );
   }
 }
 

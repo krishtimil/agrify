@@ -36,6 +36,7 @@ class _MyHomeState extends State<MyHome> {
       case 0:
         return HomePage(
           isLoggedIn: isLoggedIn,
+          currentIndex: currentIndex,
         );
       case 1:
         return InfoPage();
@@ -179,10 +180,12 @@ class _MyHomeState extends State<MyHome> {
 
 class HomePage extends StatefulWidget {
   final bool isLoggedIn;
+  int currentIndex;
 
-  const HomePage({
+  HomePage({
     Key? key,
     required this.isLoggedIn,
+    required this.currentIndex,
   }) : super(key: key);
 
   @override
@@ -298,7 +301,13 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return WeatherPage();
+                      },
+                    ));
+                  },
                   icon: const Icon(
                     Icons.arrow_forward_ios,
                     color: Colors.white,
@@ -432,7 +441,13 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return MarketPlace();
+                            },
+                          ));
+                        },
                         icon: Icon(Icons.arrow_forward_ios),
                       ),
                     ],
