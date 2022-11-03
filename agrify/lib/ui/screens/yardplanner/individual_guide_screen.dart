@@ -1,6 +1,7 @@
-import 'package:agrify/ui/utilities/colors.dart';
-import 'package:agrify/ui/utilities/constant.dart';
 import 'package:flutter/material.dart';
+
+import '../../utilities/colors.dart';
+import '../../utilities/constant.dart';
 
 class IndividualGuideScreen extends StatelessWidget {
   IndividualGuideScreen({super.key, required this.crop});

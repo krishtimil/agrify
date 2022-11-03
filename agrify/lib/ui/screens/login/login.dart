@@ -1,10 +1,10 @@
-import 'package:agrify/logic/controllers/auth_methods.dart';
-import 'package:agrify/ui/utilities/colors.dart';
-import 'package:agrify/ui/utilities/constant.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'register.dart';
 import 'package:beautiful_ui_components/beautiful_ui_components.dart';
+
+import '../../../logic/controllers/auth_methods.dart';
+import '../../utilities/colors.dart';
+import '../../utilities/constant.dart';
 
 class MyLogin extends StatefulWidget {
   const MyLogin({Key? key}) : super(key: key);

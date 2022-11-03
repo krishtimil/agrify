@@ -1,8 +1,7 @@
-import 'package:agrify/ui/utilities/colors.dart';
-import 'package:agrify/ui/utilities/constant.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
+import '../../utilities/colors.dart';
+import '../../utilities/constant.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -36,12 +35,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Positioned(
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.circular(30.0)
-                        ),
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(30.0)),
                         child: IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.camera_alt, color: Colors.white,),
+                          icon: Icon(
+                            Icons.camera_alt,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                       bottom: 5,
@@ -51,7 +52,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
               spacer(height: 10),
-              Text('Welcome Nishant Pokhrel', textAlign: TextAlign.center, style: TextStyle(fontSize: 20),),
+              Text(
+                'Welcome Nishant Pokhrel',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 20),
+              ),
             ],
           ),
         ),
