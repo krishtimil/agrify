@@ -1,5 +1,6 @@
 import 'package:agrify/logic/controllers/auth_methods.dart';
 import 'package:agrify/ui/utilities/crops_dataset.dart';
+import 'package:bulleted_list/bulleted_list.dart';
 import 'package:flutter/material.dart';
 import 'package:beautiful_ui_components/beautiful_ui_components.dart';
 import '../../components/weather_card.dart';
@@ -14,6 +15,8 @@ class InfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Map cropText = cropDAta;
+    List availableCrops = ['Potato', 'Tomato', 'Radish', 'Squash', 'Cabbage'];
+
     return Column(children: [
       // grettings row
       spacer(height: 20),
@@ -54,15 +57,16 @@ class InfoPage extends StatelessWidget {
             vertical: 15,
           ),
           color: Colors.grey[100],
-          child: Column(
-            children: [
-              Tile(
-                title: 'Potato',
-              ),
-              Tile(
-                title: 'Tomato',
-              ),
-            ],
+          child: ListView.builder(
+            itemCount: cropText.length,
+            itemBuilder: (context, index) {
+              return Tile(
+                title: availableCrops[index],
+                season: cropText[availableCrops[index]]['season'],
+                fertilizer: cropText[availableCrops[index]]['fertilizer'],
+                procedure: cropText[availableCrops[index]]['procedure'],
+              );
+            },
           ),
         ),
       ),
@@ -74,9 +78,15 @@ class Tile extends StatelessWidget {
   const Tile({
     Key? key,
     required this.title,
+    required this.season,
+    required this.fertilizer,
+    required this.procedure,
   }) : super(key: key);
 
   final String title;
+  final String season;
+  final String fertilizer;
+  final List procedure;
 
   @override
   Widget build(BuildContext context) {
@@ -88,9 +98,41 @@ class Tile extends StatelessWidget {
         borderRadius: BorderRadius.circular(12.0),
       ),
       child: ExpansionTile(
+        childrenPadding: EdgeInsets.all(10.0),
         title: Text(title),
         children: [
-          Text('Hello'),
+          spacer(height: 5),
+          Row(
+            children: [
+              Text(
+                'Appropriate Season: ',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Text('${season}'),
+            ],
+          ),
+          Wrap(
+            children: [
+              Text(
+                'Fertilizer Use: ',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Text('${fertilizer}'),
+            ],
+          ),
+          spacer(height: 5),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Procedure',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+          BulletedList(
+            listItems: procedure,
+            listOrder: ListOrder.ordered,
+            bulletType: BulletType.numbered,
+          ),
         ],
       ),
     );
