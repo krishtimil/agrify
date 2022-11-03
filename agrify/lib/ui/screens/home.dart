@@ -4,6 +4,7 @@ import 'package:agrify/ui/components/weather_card.dart';
 import 'package:agrify/ui/screens/forum/forum_screen.dart';
 import 'package:agrify/ui/screens/infobook/infomation_page.dart';
 import 'package:agrify/ui/screens/marketplace/marketplace.dart';
+import 'package:agrify/ui/screens/scanner/scanner.dart';
 import 'package:agrify/ui/screens/yardplanner/yard_planner.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -43,9 +44,7 @@ class _MyHomeState extends State<MyHome> {
           child: Text('Cart'),
         );
       case 6:
-        return Container(
-          child: Text('Scanner'),
-        );
+        return Scanner();
       default:
     }
     return ForumScreen();
