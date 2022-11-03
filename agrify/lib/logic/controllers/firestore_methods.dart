@@ -1,6 +1,7 @@
 import 'package:agrify/logic/controllers/storage_methods.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:intl/intl.dart';
 
 class FirestoreMethods {
   final _firestore = FirebaseFirestore.instance;
@@ -38,7 +39,23 @@ class FirestoreMethods {
     print(snap.get('name'));
   }
 
-  setPosts({required String uid, required String postTitle, required String }){
+  createPosts(
+      {required String uid,
+      required String postTitle,
+      required String postDes}) async {
+    await _firestore.collection('posts').doc().set({
+      'userId': uid,
+      'postTitle': postTitle,
+      'postDes': postDes,
+      'responses': [],
+      'date': DateTime.parse(DateTime.now().toIso8601String()),
+      'author': await getAuthor(uid)
+    });
+  }
 
+  getAuthor(String uid) async {
+    DocumentReference ref = _firestore.collection('users').doc(uid);
+    DocumentSnapshot snap = await ref.get();
+    return snap.get('name');
   }
 }
