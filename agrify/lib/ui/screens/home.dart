@@ -40,9 +40,7 @@ class _MyHomeState extends State<MyHome> {
       case 4:
         return WeatherPage();
       case 5:
-        return Container(
-          child: Text('Cart'),
-        );
+        return MarketPlace();
       case 6:
         return Scanner();
       default:
