@@ -89,7 +89,7 @@ class _ForumScreenState extends State<ForumScreen> {
                         onTap: () async {
                           await _openSheet(context);
                         },
-                        text: 'Add Button',
+                        text: 'Add Questions',
                         textColor: kPrimarySwatch,
                       ),
                     )

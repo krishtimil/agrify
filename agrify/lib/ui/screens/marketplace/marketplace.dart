@@ -1,11 +1,19 @@
+import 'package:agrify/logic/controllers/auth_methods.dart';
 import 'package:flutter/material.dart';
-
+import 'package:beautiful_ui_components/beautiful_ui_components.dart';
 import '../../components/weather_card.dart';
 import '../../utilities/constant.dart';
 import '../../utilities/colors.dart';
 
-class MarketPlace extends StatelessWidget {
+class MarketPlace extends StatefulWidget {
   const MarketPlace({Key? key}) : super(key: key);
+
+  @override
+  State<MarketPlace> createState() => _MarketPlaceState();
+}
+
+class _MarketPlaceState extends State<MarketPlace> {
+  bool isLoggedIn = AuthMethods().authState;
 
   @override
   Widget build(BuildContext context) {
@@ -71,10 +79,19 @@ class MarketPlace extends StatelessWidget {
               ),
             ),
 
-            SizedBox(
-              height: 25,
-            ),
-
+            spacer(height: 25),
+            isLoggedIn
+                ? Container(
+                    width: double.infinity,
+                    margin: EdgeInsets.only(bottom: 15),
+                    child: FilledButton(
+                      color: kWhiteColor,
+                      onTap: () {},
+                      text: 'Post Your Ad',
+                      textColor: kPrimarySwatch,
+                    ),
+                  )
+                : SizedBox(),
             // weather
           ],
         ),
@@ -99,21 +116,21 @@ class MarketPlace extends StatelessWidget {
                   title: 'DAP Fertilizer'),
               CartItemWidget(
                   url:
-                      'https://th.bing.com/th/id/R.71e83aa43de7160fd0ec14ceb1038656?rik=i%2f3jgmAr6Yxo%2bQ&pid=ImgRaw&r=0&sres=1&sresct=1',
-                  discountedPrice: '1200',
-                  intialPrice: '1400',
-                  title: 'DAP Fertilizer'),
+                      'https://nepalgramodhyog.store/images/products/Sabjiland%20chocolaty%20apple.png',
+                  discountedPrice: '200',
+                  intialPrice: '400',
+                  title: 'Apple'),
               CartItemWidget(
                   url:
-                      'https://th.bing.com/th/id/R.71e83aa43de7160fd0ec14ceb1038656?rik=i%2f3jgmAr6Yxo%2bQ&pid=ImgRaw&r=0&sres=1&sresct=1',
-                  discountedPrice: '1200',
-                  intialPrice: '1400',
-                  title: 'DAP Fertilizer'),
+                      'https://www.jbmpackaging.com/wp-content/uploads/2018/09/RetailSeedPackets.png',
+                  discountedPrice: '349',
+                  intialPrice: '499',
+                  title: 'Seeds'),
               CartItemWidget(
                   url:
-                      'https://th.bing.com/th/id/R.71e83aa43de7160fd0ec14ceb1038656?rik=i%2f3jgmAr6Yxo%2bQ&pid=ImgRaw&r=0&sres=1&sresct=1',
-                  discountedPrice: '1200',
-                  intialPrice: '1400',
+                      'https://banner2.cleanpng.com/20180314/ulq/kisspng-insecticide-mosquito-aerosol-spray-bottle-insecticide-spray-bottle-5aa9954103ef49.8461730915210632330162.jpg',
+                  discountedPrice: '999',
+                  intialPrice: '1350',
                   title: 'DAP Fertilizer'),
             ],
             padding: EdgeInsets.all(10),
@@ -146,23 +163,23 @@ class CartItemWidget extends StatelessWidget {
       width: 150,
       padding: EdgeInsets.only(top: 5),
       decoration: BoxDecoration(
-        color: kPrimarySwatch,
+        color: kPrimarySwatch.withOpacity(0.2),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Column(
         children: [
           Image.network(
-            'https://th.bing.com/th/id/R.71e83aa43de7160fd0ec14ceb1038656?rik=i%2f3jgmAr6Yxo%2bQ&pid=ImgRaw&r=0&sres=1&sresct=1',
+            url,
             height: 120,
           ),
           Container(
-            decoration: BoxDecoration(color: kPrimarySwatch),
+            //decoration: BoxDecoration(color: kPrimarySwatch),
             child: Column(
               children: [
                 Text(
-                  'DAP Fertilizer',
+                  title,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
@@ -172,13 +189,13 @@ class CartItemWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Text(
-                      'Rs. 1000',
-                      style: TextStyle(color: Colors.white),
+                      'Rs. ${discountedPrice}',
+                      style: TextStyle(color: Colors.blue),
                     ),
                     Text(
-                      'Rs. 1250',
+                      'Rs.${intialPrice}',
                       style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.red,
                           decoration: TextDecoration.lineThrough),
                     ),
                   ],
