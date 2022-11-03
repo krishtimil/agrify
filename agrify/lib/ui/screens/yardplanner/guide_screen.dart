@@ -17,9 +17,10 @@ class _GuideScreenState extends State<GuideScreen> {
   Map cropMap = cropDAta;
   List arr = [];
   loadData() {
-    widget.crops.forEach((element) {
-      arr.add(ReusableCropContainer(cropName: cropMap[widget.crops[0]]['cropname'], fertilizer: cropMap[widget.crops[0]]['fertilizer'], procedures: cropMap[widget.crops[0]]['procedure'], season: cropMap[widget.crops[0]]['season']));
-    });
+    for(var i=0;i<widget.crops.length;i++)
+    {
+      arr.add(ReusableCropContainer(cropName: cropMap[widget.crops[i]]['cropname'], fertilizer: cropMap[widget.crops[i]]['fertilizer'], procedures: cropMap[widget.crops[i]]['procedure'], season: cropMap[widget.crops[i]]['season']));
+    }
   }
 
   @override
@@ -91,6 +92,7 @@ class ReusableCropContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.only(bottom: 20),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.1),
