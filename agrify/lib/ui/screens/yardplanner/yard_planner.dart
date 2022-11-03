@@ -1,7 +1,7 @@
 import 'package:agrify/ui/utilities/constant.dart';
-import 'package:agrify/ui/screens/plan_screen.dart';
+import 'package:agrify/ui/screens/yardplanner/plan_screen.dart';
 import 'package:flutter/material.dart';
-import '../utilities/colors.dart';
+import '../../utilities/colors.dart';
 import 'package:beautiful_ui_components/beautiful_ui_components.dart';
 
 class YardPlanner extends StatefulWidget {

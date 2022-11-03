@@ -1,6 +1,6 @@
 import 'package:agrify/ui/utilities/constant.dart';
 import 'package:flutter/material.dart';
-import '../utilities/colors.dart';
+import '../../utilities/colors.dart';
 
 class MarketPlace extends StatelessWidget {
   const MarketPlace({Key? key}) : super(key: key);
