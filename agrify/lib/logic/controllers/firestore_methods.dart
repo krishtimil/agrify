@@ -59,4 +59,20 @@ class FirestoreMethods {
     DocumentSnapshot snap = await ref.get();
     return snap.get('name');
   }
+
+  setYards(
+      {required String name,
+      required double width,
+      required double length,
+      required List items,
+      List? volume,
+      required String uid}) async {
+    await _firestore.collection('yards').doc(uid).set({
+      'name': name, 
+      'width': width,
+      'length': length, 
+      'items':items,
+      'volume': volume
+    });
+  }
 }

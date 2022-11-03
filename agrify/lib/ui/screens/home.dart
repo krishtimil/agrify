@@ -4,6 +4,7 @@ import 'package:agrify/ui/components/weather_card.dart';
 import 'package:agrify/ui/screens/forum/forum_screen.dart';
 import 'package:agrify/ui/screens/marketplace/marketplace.dart';
 import 'package:agrify/ui/screens/yardplanner/yard_planner.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -224,11 +225,13 @@ class HomePage extends StatelessWidget {
                   child: isLoggedIn
                       ? GestureDetector(
                           child: CircleAvatar(),
-                          onTap: () => Navigator.pushNamed(context, '/profile'),
-                        )
-                      : IconButton(
-                          onPressed: () async {
+                          onTap: () async {
+                            await FirebaseAuth.instance.signOut();
                             Navigator.pushReplacementNamed(context, '/login');
+                          })
+                      : IconButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/login');
                           },
                           icon: const Icon(
                             Icons.login,

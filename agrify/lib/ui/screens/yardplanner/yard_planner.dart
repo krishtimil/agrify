@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:beautiful_ui_components/beautiful_ui_components.dart';
 
 import '../../utilities/colors.dart';
 import '../../utilities/constant.dart';
 import './plan_screen.dart';
+import 'guide_screen.dart';
 
 class YardPlanner extends StatefulWidget {
   const YardPlanner({Key? key}) : super(key: key);
@@ -59,7 +61,7 @@ class _YardPlannerState extends State<YardPlanner> {
                   height: 8,
                 ),
                 Text(
-                  'Plan your feild.',
+                  'Plan your field.',
                   style: TextStyle(
                     color: kPrimarySwatch.shade100,
                   ),
@@ -81,9 +83,40 @@ class _YardPlannerState extends State<YardPlanner> {
               ],
             ),
             spacer(height: 20),
-            const Text(
-              'Sorry! No yards planned yet',
-              style: TextStyle(color: Colors.white),
+            StreamBuilder(
+              stream:
+                  FirebaseFirestore.instance.collection('yards').snapshots(),
+              builder: ((context, snapshot) {
+                if (snapshot.hasData) {
+                  var snapData = snapshot.data!.docs;
+
+                  return Column(
+                    children: snapData
+                        .map(
+                          ((e) => ListTile(
+                                title: Text(e.get('name')),
+                                trailing: IconButton(
+                                  icon:const Icon(
+                                    Icons.arrow_forward_ios_rounded,
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: ((context) =>
+                                                GuideScreen(crops: e.get('items'),)),),);
+                                  },
+                                ),
+                              )),
+                        )
+                        .toList(),
+                  );
+                }
+                return const Text(
+                  'Sorry! No yards planned yet',
+                  style: TextStyle(color: Colors.white),
+                );
+              }),
             ),
             spacer(height: 30),
           ],
@@ -134,9 +167,12 @@ class _YardPlannerState extends State<YardPlanner> {
                   ),
                   spacer(height: 20),
                   FilledButton(
-                      color: kPrimarySwatch,
-                      text: 'Plan Now',
-                      onTap: () {
+                    color: kPrimarySwatch,
+                    text: 'Plan Now',
+                    onTap: () {
+                      if (_nameController.text.isNotEmpty &&
+                          _widthController.text.isNotEmpty &&
+                          _heightController.text.isNotEmpty) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -147,8 +183,14 @@ class _YardPlannerState extends State<YardPlanner> {
                                 )),
                           ),
                         );
-                      },
-                      textColor: kWhiteColor),
+                      } else {
+                        showSnackbar(
+                            'All the fields are mandatory. keep none empty',
+                            context);
+                      }
+                    },
+                    textColor: kWhiteColor,
+                  ),
                 ],
               ),
             ),

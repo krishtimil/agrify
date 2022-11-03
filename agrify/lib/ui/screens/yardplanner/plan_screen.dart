@@ -1,4 +1,7 @@
+import 'package:agrify/logic/controllers/auth_methods.dart';
+import 'package:agrify/logic/controllers/firestore_methods.dart';
 import 'package:beautiful_ui_components/beautiful_ui_components.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import './guide_screen.dart';
@@ -22,7 +25,9 @@ class PlanScreen extends StatefulWidget {
 
 class PlanScreenState extends State<PlanScreen> {
   List plannedCrops = [];
-  List availableCrops = ['Potato', 'Soyabean', 'Paddy', 'Maize', 'Sushil'];
+  List availableCrops = ['Potato', 'Tomato', 'Radish', 'Squash', 'Cabbage'];
+
+  final _firestoreMethods = FirestoreMethods();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +52,8 @@ class PlanScreenState extends State<PlanScreen> {
                 ),
                 spacer(height: 20),
                 plannedCrops.isNotEmpty
-                    ? Column(
+                    ?
+                    Column(
                         children: plannedCrops
                             .map(
                               (e) => Padding(
@@ -73,7 +79,7 @@ class PlanScreenState extends State<PlanScreen> {
                               ),
                             )
                             .toList(),
-                      )
+                    )
                     : Text(
                         'You haven\'t planned any crops yet. Start By Adding '),
                 spacer(height: 20),
@@ -127,12 +133,27 @@ class PlanScreenState extends State<PlanScreen> {
                 FilledButton(
                   color: kPrimarySwatch,
                   text: 'Add',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (_) => GuideScreen(crops: plannedCrops)),
-                    );
+                  onTap: () async {
+                    if (plannedCrops.isNotEmpty) {
+                      await _firestoreMethods.setYards(
+                        name: widget.name!,
+                        width: widget.width!,
+                        length: widget.length!,
+                        items: plannedCrops,
+                        uid: AuthMethods().gerUserId,
+                      );
+                      showSnackbar('Yard Successfully Planned', context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: ((context) =>
+                              GuideScreen(crops: plannedCrops)),
+                        ),
+                      );
+                    } else {
+                      showSnackbar(
+                          'Please add some crops to continue', context);
+                    }
                   },
                   textColor: kWhiteColor,
                 ),
