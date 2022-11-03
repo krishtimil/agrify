@@ -3,7 +3,6 @@ import 'package:agrify/logic/controllers/auth_methods.dart';
 import 'package:agrify/ui/components/weather_card.dart';
 import 'package:agrify/ui/screens/marketplace/marketplace.dart';
 import 'package:agrify/ui/screens/yardplanner/yard_planner.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -28,7 +27,6 @@ class _MyHomeState extends State<MyHome> {
         return HomePage(
           isLoggedIn: isLoggedIn,
         );
-        break;
       case 1:
         return MarketPlace();
       case 2:
