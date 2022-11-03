@@ -17,14 +17,12 @@ class _GuideScreenState extends State<GuideScreen> {
   Map cropMap = cropDAta;
   List arr = [];
   loadData() {
-    for (var i = 0; i < widget.crops.length; i++) {
-      print("search filter ${widget.crops[i]}");
-      arr.add(ReusableCropContainer(
-          cropName: cropMap[widget.crops[i]]['cropname'],
-          fertilizer: cropMap[widget.crops[i]]['fertilizer'],
-          procedures: cropMap[widget.crops[i]]['procedures'],
-          season: cropMap[widget.crops[i]]['season']));
-    }
+    
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
@@ -52,7 +50,7 @@ class _GuideScreenState extends State<GuideScreen> {
                   ],
                 ),
                 spacer(height: 30),
-                ...arr
+                // ...arr
               ],
             ),
           ),
