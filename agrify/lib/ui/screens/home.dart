@@ -1,15 +1,19 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:agrify/ui/components/market_tile.dart';
 import 'package:agrify/logic/controllers/auth_methods.dart';
 import 'package:agrify/ui/components/weather_card.dart';
 import 'package:agrify/ui/screens/forum/forum_screen.dart';
 import 'package:agrify/ui/screens/infobook/infomation_page.dart';
-import 'package:agrify/ui/screens/marketplace/marketplace.dart';
 import 'package:agrify/ui/screens/scanner/scanner.dart';
 import 'package:agrify/ui/screens/yardplanner/yard_planner.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:image_picker/image_picker.dart';
 
+import '../utilities/image_picker.dart';
 import 'weather/weather_page.dart';
 import '../utilities/colors.dart';
 import '../utilities/constant.dart';
@@ -24,6 +28,7 @@ class MyHome extends StatefulWidget {
 class _MyHomeState extends State<MyHome> {
   bool isLoggedIn = AuthMethods().authState;
   int currentIndex = 0;
+  Uint8List? _image;
 
   Widget setBottombarPage() {
     switch (currentIndex) {
