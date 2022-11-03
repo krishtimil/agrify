@@ -1,11 +1,9 @@
 import 'package:agrify/ui/components/market_tile.dart';
 import 'package:agrify/logic/controllers/auth_methods.dart';
 import 'package:agrify/ui/components/weather_card.dart';
-import 'package:agrify/ui/screens/weather_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:agrify/ui/screens/forum_screen.dart';
+import 'package:agrify/ui/screens/weatherHomePage.dart';
 import 'package:flutter/material.dart';
-
-import './weatherHomePage.dart';
 import '../utilities/colors.dart';
 import '../utilities/constant.dart';
 
@@ -33,7 +31,7 @@ class _MyHomeState extends State<MyHome> {
         return WeatherPage();
       default:
     }
-    return Container();
+    return ForumScreen();
   }
 
   @override

@@ -1,11 +1,10 @@
+import 'package:agrify/ui/components/dataset.dart';
+import 'package:agrify/ui/components/extraWeather.dart';
 import 'package:agrify/ui/utilities/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
-
-import './dataset.dart';
 import './detailPage.dart';
-import './extraWeather.dart';
 
 class WeatherPage extends StatelessWidget {
   @override

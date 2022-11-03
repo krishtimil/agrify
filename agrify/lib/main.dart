@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         textTheme: textTheme,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/yard',
+      initialRoute: '/home',
       routes: {
         '/register': (context) => const MyRegister(),
         '/login': ((context) => const MyLogin()),

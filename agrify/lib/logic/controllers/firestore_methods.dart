@@ -37,4 +37,8 @@ class FirestoreMethods {
     DocumentSnapshot snap = await ref.get();
     print(snap.get('name'));
   }
+
+  setPosts({required String uid, required String postTitle, required String }){
+
+  }
 }
