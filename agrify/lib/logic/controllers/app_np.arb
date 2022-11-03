@@ -1,0 +1,27 @@
+{
+  "nepali": {
+    "hello": "नमस्ते कृषक",
+    "weatherUpdates": "मौसम अपडेटहरू",
+    "search": "खोजी गर्नुहोस्",
+    "yesterday": "हिजो",
+    "cloudy": "बादल छ",
+    "sunny": "घमाइलो",
+    "tomorrow": "भोलि",
+    "rainy": "वर्षा",
+    "hailstone": "अलर्ट! असिना भोलि!",
+    "marketplace": "बजारक्षेत्र",
+    "fertilizer": "मल",
+    "grains": "दाना / अन्न",
+    "today": "आज",
+    "thunderStorm": "आधिबेरी",
+    "yardPlanner": "बारी योजना",
+    "placeToSell": "तपाईंको किन्ने / बेच्न ठाउँ",
+    "sorryNotPlanned": "माफ गर्नुहोस्! अहिलेसम्म कुनै बारी योजना गरिएको छैन",
+    "myYards": "मेरो बारी",
+    "planNow": "नयाँ योजना",
+    "planYourYardNow": "तपाईंको बारीको योजना गर्नुहोस्",
+    "nameYourYard": "बारीको नाम दिनुहोस्",
+    "width": "चौडाइ (यार्डमा)",
+    "length": "लम्बाइ (यार्डमा)"
+  }
+}

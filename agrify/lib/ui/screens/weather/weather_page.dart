@@ -22,86 +22,88 @@ class WeatherPage extends StatelessWidget {
 class CurrentWeather extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GlowContainer(
-      height: MediaQuery.of(context).size.height - 300,
-      margin: EdgeInsets.all(2),
-      padding: EdgeInsets.only(top: 20, left: 30, right: 30),
-      glowColor: kPrimarySwatch.withOpacity(0.5),
-      borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(60), bottomRight: Radius.circular(60)),
-      color: kPrimarySwatch,
-      spreadRadius: 5,
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Icon(CupertinoIcons.map_fill, color: Colors.white),
-              Text(
-                " " + currentTemp.location!,
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                    color: Colors.white),
-              ),
-            ],
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 10),
-            padding: EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                border: Border.all(width: 0.2, color: Colors.white),
-                borderRadius: BorderRadius.circular(30)),
-            child: Text(
-              "Updating",
-              style:
-                  TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-            ),
-          ),
-          Container(
-            height: 320,
-            child: Stack(
+    return SafeArea(
+      child: GlowContainer(
+        height: MediaQuery.of(context).size.height - 300,
+        margin: EdgeInsets.all(2),
+        padding: EdgeInsets.only(top: 20, left: 30, right: 30),
+        glowColor: kPrimarySwatch.withOpacity(0.5),
+        borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(60), bottomRight: Radius.circular(60)),
+        color: kPrimarySwatch,
+        spreadRadius: 5,
+        child: Column(
+          children: [
+            Row(
               children: [
-                Image(
-                  image: AssetImage(currentTemp.image!),
-                  fit: BoxFit.fill,
+                Icon(CupertinoIcons.map_fill, color: Colors.white),
+                Text(
+                  " " + currentTemp.location!,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                      color: Colors.white),
                 ),
-                Positioned(
-                  bottom: 0,
-                  right: 0,
-                  left: 0,
-                  child: Center(
-                      child: Column(
-                    children: [
-                      GlowText(
-                        currentTemp.current.toString(),
-                        style: TextStyle(
-                            height: 0.1,
-                            fontSize: 100,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.yellow.shade100),
-                      ),
-                      Text(currentTemp.name!,
-                          style: TextStyle(
-                            fontSize: 25,
-                          )),
-                      Text(currentTemp.day!,
-                          style: TextStyle(
-                            fontSize: 18,
-                          ))
-                    ],
-                  )),
-                )
               ],
             ),
-          ),
-          Divider(
-            color: Colors.white,
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          ExtraWeather(currentTemp)
-        ],
+            Container(
+              margin: EdgeInsets.only(top: 10),
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  border: Border.all(width: 0.2, color: Colors.white),
+                  borderRadius: BorderRadius.circular(30)),
+              child: Text(
+                "Updating",
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+              ),
+            ),
+            Container(
+              height: 320,
+              child: Stack(
+                children: [
+                  Image(
+                    image: AssetImage(currentTemp.image!),
+                    fit: BoxFit.fill,
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    left: 0,
+                    child: Center(
+                        child: Column(
+                      children: [
+                        GlowText(
+                          currentTemp.current.toString(),
+                          style: TextStyle(
+                              height: 0.1,
+                              fontSize: 100,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.yellow.shade100),
+                        ),
+                        Text(currentTemp.name!,
+                            style: TextStyle(
+                              fontSize: 25,
+                            )),
+                        Text(currentTemp.day!,
+                            style: TextStyle(
+                              fontSize: 18,
+                            ))
+                      ],
+                    )),
+                  )
+                ],
+              ),
+            ),
+            Divider(
+              color: Colors.white,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            ExtraWeather(currentTemp)
+          ],
+        ),
       ),
     );
   }
