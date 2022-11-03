@@ -2,6 +2,7 @@ import 'package:agrify/ui/components/market_tile.dart';
 import 'package:agrify/logic/controllers/auth_methods.dart';
 import 'package:agrify/ui/components/weather_card.dart';
 import 'package:agrify/ui/screens/forum/forum_screen.dart';
+import 'package:agrify/ui/screens/infobook/infomation_page.dart';
 import 'package:agrify/ui/screens/marketplace/marketplace.dart';
 import 'package:agrify/ui/screens/yardplanner/yard_planner.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class _MyHomeState extends State<MyHome> {
           isLoggedIn: isLoggedIn,
         );
       case 1:
-        return MarketPlace();
+        return InfoPage();
       case 2:
         return YardPlanner();
       case 3:
@@ -52,6 +53,7 @@ class _MyHomeState extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: kPrimarySwatch,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
@@ -199,7 +201,7 @@ class HomePage extends StatelessWidget {
                       'Namaste, ${isLoggedIn ? "Nishant" : "Agriculturist!"}',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 24,
+                        fontSize: 22,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -239,10 +241,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
 
-            SizedBox(
-              height: 28,
-            ),
-
+            spacer(height: 28),
             //search bar
             Container(
               decoration: BoxDecoration(
@@ -269,7 +268,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
 
-            SizedBox(
+            spacer(
               height: 25,
             ),
 
