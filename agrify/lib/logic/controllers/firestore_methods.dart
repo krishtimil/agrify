@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:agrify/logic/controllers/storage_methods.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
@@ -37,5 +35,6 @@ class FirestoreMethods {
   nameOfUser(String uid) async {
     DocumentReference ref = _firestore.collection('users').doc(uid);
     DocumentSnapshot snap = await ref.get();
+    print(snap.get('name'));
   }
 }
