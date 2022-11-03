@@ -3,22 +3,13 @@ import 'package:flutter/material.dart';
 import '../../utilities/colors.dart';
 import '../../utilities/constant.dart';
 import '../../utilities/crops_dataset.dart';
+import 'guide_screen.dart';
 
 class IndividualGuideScreen extends StatelessWidget {
   IndividualGuideScreen({super.key, required this.crop});
 
   String crop = '';
-
   Map cropMap = cropDAta;
-
-  loadData() {
-    print(crop);
-    return IndividualCropContainer(
-        cropName: cropMap[crop.toLowerCase()]['cropname'],
-        fertilizer: cropMap[crop.toLowerCase()]['fertilizer'],
-        procedures: cropMap[crop.toLowerCase()]['procedures'],
-        season: cropMap[crop.toLowerCase()]['season']);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +36,12 @@ class IndividualGuideScreen extends StatelessWidget {
                   ],
                 ),
                 spacer(height: 30),
-                loadData()
+                IndividualCropContainer(
+                  cropName: cropMap[crop]['cropname'],
+                  fertilizer: cropMap[crop]['fertilizer'],
+                  procedures: cropMap[crop]['procedure'],
+                  season: cropMap[crop]['season'],
+                ),
               ],
             ),
           ),
@@ -55,8 +51,8 @@ class IndividualGuideScreen extends StatelessWidget {
   }
 }
 
-class IndividualCropContainer extends StatelessWidget {
-  const IndividualCropContainer({
+class IndividualCropContainer extends StatefulWidget {
+  IndividualCropContainer({
     Key? key,
     required this.cropName,
     required this.fertilizer,
@@ -69,13 +65,29 @@ class IndividualCropContainer extends StatelessWidget {
   final List procedures;
   final String fertilizer;
 
+  @override
+  State<IndividualCropContainer> createState() =>
+      _IndividualCropContainerState();
+}
+
+class _IndividualCropContainerState extends State<IndividualCropContainer> {
+  Set arr = {};
+
   loadTile() {
-    for (var i = 0; i < procedures.length; i++) {
-      return ListTile(
-        leading: Text((i + 1).toString()),
-        title: Text(procedures[i]),
+    for (var i = 0; i < widget.procedures.length; i++) {
+      arr.add(
+        ListTile(
+          leading: Text((i + 1).toString()),
+          title: Text(widget.procedures[i]),
+        ),
       );
     }
+  }
+
+  @override
+  void initState() {
+    loadTile();
+    super.initState();
   }
 
   @override
@@ -91,7 +103,7 @@ class IndividualCropContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                cropName,
+                widget.cropName,
                 style: TextStyle(
                   color: kWhiteColor,
                   fontSize: 20,
@@ -99,37 +111,18 @@ class IndividualCropContainer extends StatelessWidget {
                 ),
               ),
               Text(
-                'Best Season - ${season}',
+                'Best Season - ${widget.season}',
                 style: TextStyle(color: kWhiteColor),
               ),
             ],
           ),
           spacer(height: 10),
+          ...arr.toList(),
           Column(
             children: [
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: loadTile(),
-              ),
-              spacer(height: 20),
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) => IndividualGuideScreen(crop: 'Potato')),
-                  );
-                },
-                child: ListTile(
-                  title: Text(
-                    'See More'.toUpperCase(),
-                    style: const TextStyle(color: kWhiteColor),
-                  ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios_rounded,
-                    color: kWhiteColor,
-                  ),
-                ),
               ),
             ],
           )
