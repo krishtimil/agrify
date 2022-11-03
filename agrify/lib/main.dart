@@ -1,3 +1,5 @@
+import 'package:agrify/ui/screens/tracker/tracker.dart';
+
 import 'ui/screens/yardplanner/yard_planner.dart';
 import 'package:agrify/ui/utilities/font_style.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -33,6 +35,7 @@ class MyApp extends StatelessWidget {
         '/404': (context) => const NotFoundScreen(),
         '/profile': (context) => const ProfileScreen(),
         '/yard': (context) => const YardPlanner(),
+        '/tracker':(context) => SaleTracker()
       },
       onUnknownRoute: (settings) {
         Navigator.pushNamed(context, '/404');
