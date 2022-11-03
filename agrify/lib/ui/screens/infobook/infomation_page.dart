@@ -14,6 +14,8 @@ class InfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Map cropText = cropDAta;
+    List availableCrops = ['Potato', 'Tomato', 'Radish', 'Squash', 'Cabbage'];
+
     return Column(children: [
       // grettings row
       spacer(height: 20),
@@ -54,15 +56,14 @@ class InfoPage extends StatelessWidget {
             vertical: 15,
           ),
           color: Colors.grey[100],
-          child: Column(
-            children: [
-              Tile(
-                title: 'Potato',
-              ),
-              Tile(
-                title: 'Tomato',
-              ),
-            ],
+          child: ListView.builder(
+            itemCount: cropText.length,
+            itemBuilder: (context, index) {
+              return Tile(
+                title: availableCrops[index],
+                season: cropText[availableCrops[index]]['season'],
+              );
+            },
           ),
         ),
       ),
@@ -74,9 +75,11 @@ class Tile extends StatelessWidget {
   const Tile({
     Key? key,
     required this.title,
+    required this.season,
   }) : super(key: key);
 
   final String title;
+  final String season;
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +93,18 @@ class Tile extends StatelessWidget {
       child: ExpansionTile(
         title: Text(title),
         children: [
-          Text('Hello'),
+          spacer(height: 5),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Text('Appropriate Season:'),
+                  Text('${season}'),
+                ],
+              ),
+            ],
+          ),
         ],
       ),
     );
