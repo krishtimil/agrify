@@ -177,13 +177,20 @@ class _MyHomeState extends State<MyHome> {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   final bool isLoggedIn;
 
   const HomePage({
     Key? key,
     required this.isLoggedIn,
   }) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  bool isClosed = false;
 
   @override
   Widget build(BuildContext context) {
@@ -202,7 +209,7 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Namaste, ${isLoggedIn ? "Nishant" : "Agriculturist!"}',
+                      'Namaste, ${widget.isLoggedIn ? "Nishant" : "Agriculturist!"}',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 22,
@@ -227,7 +234,7 @@ class HomePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   padding: EdgeInsets.all(12),
-                  child: isLoggedIn
+                  child: widget.isLoggedIn
                       ? GestureDetector(
                           child: CircleAvatar(),
                           onTap: () async {
@@ -292,7 +299,7 @@ class HomePage extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.arrow_forward_ios,
                     color: Colors.white,
                   ),
@@ -300,9 +307,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
 
-            SizedBox(
-              height: 25,
-            ),
+            spacer(height: 25),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -369,34 +374,44 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
+      spacer(height: 25),
 
-      Container(
-        margin: EdgeInsets.all(25),
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: Colors.red,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Alert! Hailstone Tomorrow!',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 15,
+      isClosed
+          ? SizedBox()
+          : Container(
+              margin: EdgeInsets.symmetric(horizontal: 25.0),
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: Colors.red,
               ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Alert! Hailstone Tomorrow!',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                    ),
+                  ),
+                  IconButton(
+                    icon: const Icon(
+                      Icons.close,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        isClosed = true;
+                      });
+                    },
+                  ),
+                ],
+              ),
+              width: double.infinity,
             ),
-            Icon(
-              Icons.close,
-              color: Colors.white,
-            ),
-          ],
-        ),
-        width: double.infinity,
-      ),
       // weather
-
+      spacer(height: 20),
       Expanded(
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 25),
@@ -434,9 +449,9 @@ class HomePage extends StatelessWidget {
                     icon: Icons.grain,
                   ),
                   MarketTile(
-                    text: 'Sushill',
-                    price: 1,
-                    icon: Icons.person,
+                    text: 'Apple',
+                    price: 100,
+                    icon: Icons.apple,
                   ),
                 ],
               ),

@@ -130,6 +130,8 @@ class Tile extends StatelessWidget {
           ),
           BulletedList(
             listItems: procedure,
+            listOrder: ListOrder.ordered,
+            bulletType: BulletType.numbered,
           ),
         ],
       ),
