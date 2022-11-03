@@ -1,4 +1,4 @@
-import 'package:agrify/ui/screens/guide_screen.dart';
+import 'package:agrify/ui/screens/yardplanner/guide_screen.dart';
 import 'package:agrify/ui/utilities/colors.dart';
 import 'package:agrify/ui/utilities/constant.dart';
 import 'package:beautiful_ui_components/beautiful_ui_components.dart';
@@ -131,7 +131,8 @@ class PlanScreenState extends State<PlanScreen> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => GuideScreen(crops: plannedCrops)),
+                      MaterialPageRoute(
+                          builder: (_) => GuideScreen(crops: plannedCrops)),
                     );
                   },
                   textColor: kWhiteColor,

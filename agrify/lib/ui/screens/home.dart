@@ -1,13 +1,13 @@
 import 'package:agrify/ui/components/market_tile.dart';
 import 'package:agrify/logic/controllers/auth_methods.dart';
 import 'package:agrify/ui/components/weather_card.dart';
-import 'package:agrify/ui/screens/marketplace.dart';
-import 'package:agrify/ui/screens/yard_planner.dart';
+import 'package:agrify/ui/screens/marketplace/marketplace.dart';
+import 'package:agrify/ui/screens/yardplanner/yard_planner.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import './weatherHomePage.dart';
+import 'weather/weather_page.dart';
 import '../utilities/colors.dart';
 import '../utilities/constant.dart';
 

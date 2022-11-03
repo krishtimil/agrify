@@ -1,4 +1,4 @@
-import 'package:agrify/ui/screens/individual_guide_screen.dart';
+import 'package:agrify/ui/screens/yardplanner/individual_guide_screen.dart';
 import 'package:agrify/ui/utilities/colors.dart';
 import 'package:agrify/ui/utilities/constant.dart';
 import 'package:flutter/material.dart';

@@ -2,8 +2,8 @@ import 'package:agrify/ui/utilities/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
 
-import '../components/dataset.dart';
-import '../components/extraWeather.dart';
+import '../../components/dataset.dart';
+import '../../components/extraWeather.dart';
 
 class DetailPage extends StatelessWidget {
   @override

@@ -3,7 +3,7 @@ import 'package:agrify/ui/utilities/colors.dart';
 import 'package:agrify/ui/utilities/constant.dart';
 import 'package:beautiful_ui_components/beautiful_ui_components.dart';
 import 'package:flutter/material.dart';
-import './login.dart';
+import 'login.dart';
 
 class MyRegister extends StatefulWidget {
   const MyRegister({Key? key}) : super(key: key);
@@ -121,16 +121,18 @@ class _MyRegisterState extends State<MyRegister> {
                                     fontSize: 27,
                                     fontWeight: FontWeight.w700),
                               ),
-                              isClicked? CircularProgressIndicator(): CircleAvatar(
-                                radius: 30,
-                                backgroundColor: kPrimarySwatch,
-                                child: IconButton(
-                                    color: kWhiteColor,
-                                    onPressed: register,
-                                    icon: const Icon(
-                                      Icons.arrow_forward,
-                                    )),
-                              )
+                              isClicked
+                                  ? CircularProgressIndicator()
+                                  : CircleAvatar(
+                                      radius: 30,
+                                      backgroundColor: kPrimarySwatch,
+                                      child: IconButton(
+                                          color: kWhiteColor,
+                                          onPressed: register,
+                                          icon: const Icon(
+                                            Icons.arrow_forward,
+                                          )),
+                                    )
                             ],
                           ),
                           spacer(

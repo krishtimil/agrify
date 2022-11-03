@@ -3,14 +3,14 @@ import 'package:agrify/logic/controllers/firestore_methods.dart';
 import 'package:agrify/logic/controllers/storage_methods.dart';
 import 'package:agrify/ui/screens/404.dart';
 import 'package:agrify/ui/screens/home.dart';
-import 'package:agrify/ui/screens/plan_screen.dart';
-import 'package:agrify/ui/screens/profile.dart';
-import 'package:agrify/ui/screens/yard_planner.dart';
+import 'package:agrify/ui/screens/yardplanner/plan_screen.dart';
+import 'package:agrify/ui/screens/login/profile.dart';
+import 'package:agrify/ui/screens/yardplanner/yard_planner.dart';
 import 'package:agrify/ui/utilities/font_style.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:agrify/ui/screens/login.dart';
-import 'package:agrify/ui/screens/register.dart';
+import 'package:agrify/ui/screens/login/login.dart';
+import 'package:agrify/ui/screens/login/register.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
