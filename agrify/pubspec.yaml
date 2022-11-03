@@ -48,6 +48,7 @@ dependencies:
   flutter_glow: ^0.2.0
   image_picker: ^0.8.6
   bulleted_list: ^0.0.1+0.1a
+  firebase_messaging: ^14.0.4
 
 dev_dependencies:
   flutter_test:

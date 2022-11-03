@@ -1,4 +1,5 @@
 import 'package:agrify/ui/screens/tracker/tracker.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 import 'ui/screens/yardplanner/yard_planner.dart';
 import 'package:agrify/ui/utilities/font_style.dart';
@@ -11,9 +12,15 @@ import './ui/screens/login/profile.dart';
 import './ui/screens/login/login.dart';
 import './ui/screens/login/register.dart';
 
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  print("Hendling a backgorung message: ${message.messageId}");
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   runApp(const MyApp());
 }
 
