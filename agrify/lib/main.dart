@@ -28,14 +28,14 @@ class MyApp extends StatelessWidget {
         textTheme: textTheme,
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/yard',
+      initialRoute: '/home',
       routes: {
         '/register': (context) => const MyRegister(),
         '/login': ((context) => const MyLogin()),
         '/home': (context) => const MyHome(),
         '/404': (context) => const NotFoundScreen(),
-        '/profile':(context) => const ProfileScreen(),
-        '/yard':(context) => const YardPlanningScreen(),
+        '/profile': (context) => const ProfileScreen(),
+        '/yard': (context) => const YardPlanningScreen(),
       },
       onUnknownRoute: (settings) {
         Navigator.pushNamed(context, '/404');

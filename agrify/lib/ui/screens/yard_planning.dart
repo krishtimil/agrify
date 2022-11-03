@@ -44,14 +44,12 @@ class _YardPlanningScreenState extends State<YardPlanningScreen> {
               child: Column(
                 children: [
                   spacer(height: 30),
-                  Center(
-                    child: Text(
-                      'plan your yard'.toUpperCase(),
-                      style: const TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.w800,
-                        color: kWhiteColor,
-                      ),
+                  Text(
+                    'plan your yard'.toUpperCase(),
+                    style: const TextStyle(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w800,
+                      color: kWhiteColor,
                     ),
                   ),
                   spacer(height: 20),
