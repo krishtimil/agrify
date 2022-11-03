@@ -1,7 +1,8 @@
 import 'package:agrify/ui/components/market_tile.dart';
 import 'package:agrify/logic/controllers/auth_methods.dart';
 import 'package:agrify/ui/components/weather_card.dart';
-import 'package:agrify/ui/screens/yard_planning.dart';
+import 'package:agrify/ui/screens/marketplace.dart';
+import 'package:agrify/ui/screens/yard_planner.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -29,11 +30,9 @@ class _MyHomeState extends State<MyHome> {
         );
         break;
       case 1:
-        return Container(
-          child: Text('Information Book'),
-        );
+        return MarketPlace();
       case 2:
-        return YardPlanningScreen();
+        return YardPlanner();
       case 3:
         return Container(
           child: Text('Settings'),
