@@ -1,5 +1,6 @@
-import 'package:agrify/logic/controllers/firestore_methods.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
+import './firestore_methods.dart';
 
 class AuthMethods {
   final _auth = FirebaseAuth.instance;
@@ -57,11 +58,10 @@ class AuthMethods {
     return _auth.currentUser!.uid;
   }
 
-  bool get authState{
+  bool get authState {
     if (_auth.currentUser != null) {
       return true;
     }
     return false;
   }
-  
 }
