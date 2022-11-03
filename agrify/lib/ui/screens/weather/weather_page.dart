@@ -4,7 +4,7 @@ import 'package:flutter_glow/flutter_glow.dart';
 
 import '../../utilities/colors.dart';
 import '../../components/dataset.dart';
-import './detailPage.dart';
+import 'detail_page.dart';
 import '../../components/extraWeather.dart';
 
 class WeatherPage extends StatelessWidget {
