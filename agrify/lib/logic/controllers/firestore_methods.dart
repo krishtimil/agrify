@@ -1,7 +1,8 @@
-import 'package:agrify/logic/controllers/storage_methods.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:intl/intl.dart';
+
+import './storage_methods.dart';
 
 class FirestoreMethods {
   final _firestore = FirebaseFirestore.instance;

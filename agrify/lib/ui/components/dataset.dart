@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class Weather {
   final int? max;
   final int? min;
@@ -36,7 +38,7 @@ Weather currentTemp = Weather(
     current: 21,
     image: "assets/thunder.png",
     name: "Thunderstorm",
-    day: "Monday, 17 May",
+    day: DateFormat.yMMMd().format(DateTime.now()),
     wind: 13,
     humidity: 24,
     chanceRain: 87,

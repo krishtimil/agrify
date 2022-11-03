@@ -1,16 +1,13 @@
-import 'package:agrify/logic/controllers/auth_methods.dart';
-import 'package:agrify/logic/controllers/firestore_methods.dart';
-import 'package:agrify/logic/controllers/storage_methods.dart';
-import 'package:agrify/ui/screens/404.dart';
-import 'package:agrify/ui/screens/home.dart';
-import 'package:agrify/ui/screens/plan_screen.dart';
-import 'package:agrify/ui/screens/profile.dart';
-import 'package:agrify/ui/screens/yard_planning.dart';
+import 'ui/screens/yardplanner/yard_planner.dart';
 import 'package:agrify/ui/utilities/font_style.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:agrify/ui/screens/login.dart';
-import 'package:agrify/ui/screens/register.dart';
+
+import './ui/screens/404.dart';
+import './ui/screens/home.dart';
+import './ui/screens/login/profile.dart';
+import './ui/screens/login/login.dart';
+import './ui/screens/login/register.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,8 +31,8 @@ class MyApp extends StatelessWidget {
         '/login': ((context) => const MyLogin()),
         '/home': (context) => const MyHome(),
         '/404': (context) => const NotFoundScreen(),
-        '/profile':(context) => const ProfileScreen(),
-        '/yard':(context) => const YardPlanningScreen(),
+        '/profile': (context) => const ProfileScreen(),
+        '/yard': (context) => const YardPlanner(),
       },
       onUnknownRoute: (settings) {
         Navigator.pushNamed(context, '/404');

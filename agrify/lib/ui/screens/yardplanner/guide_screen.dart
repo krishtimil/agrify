@@ -1,7 +1,8 @@
-import 'package:agrify/ui/screens/individual_guide_screen.dart';
-import 'package:agrify/ui/utilities/colors.dart';
-import 'package:agrify/ui/utilities/constant.dart';
 import 'package:flutter/material.dart';
+
+import './individual_guide_screen.dart';
+import '../../utilities/colors.dart';
+import '../../utilities/constant.dart';
 
 class GuideScreen extends StatefulWidget {
   GuideScreen({super.key, required this.crops});
