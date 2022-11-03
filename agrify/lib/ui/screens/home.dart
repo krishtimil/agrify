@@ -1,7 +1,7 @@
 import 'package:agrify/ui/components/market_tile.dart';
 import 'package:agrify/logic/controllers/auth_methods.dart';
 import 'package:agrify/ui/components/weather_card.dart';
-import 'package:agrify/ui/screens/forum_screen.dart';
+import 'package:agrify/ui/screens/forum/forum_screen.dart';
 import 'package:agrify/ui/screens/marketplace/marketplace.dart';
 import 'package:agrify/ui/screens/yardplanner/yard_planner.dart';
 import 'package:flutter/material.dart';
@@ -33,9 +33,7 @@ class _MyHomeState extends State<MyHome> {
       case 2:
         return YardPlanner();
       case 3:
-        return Container(
-          child: Text('Settings'),
-        );
+        return ForumScreen();
       case 4:
         return WeatherPage();
       case 5:
@@ -154,7 +152,7 @@ class _MyHomeState extends State<MyHome> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.settings),
+                        Icon(Icons.comment),
                         //Text("Perfil")
                         //const Padding(padding: EdgeInsets.only(left: 10))
                       ],
