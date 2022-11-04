@@ -1,3 +1,4 @@
+import 'package:agrify/ui/screens/forum/reply_screen.dart';
 import 'package:agrify/ui/utilities/constant.dart';
 import 'package:beautiful_ui_components/beautiful_ui_components.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -277,7 +278,7 @@ class StreamFetch extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     builder: (_) =>
-                                        IndividualGuideScreen(crop: 'Potato')),
+                                        ReplyScreen(postTitle: postSnap.get('postTitle'))),
                               );
                             },
                             child: ListTile(
