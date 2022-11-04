@@ -53,7 +53,7 @@ $ git clone https://github.com/U-Tec-Hackathon-Alpha/Team-NKS.git
 Change the working directory to the newly cloned repository:
 
 ```bash
-$ cd Team-NKS/agrify
+$ cd agrify/agrify
 ```
 
 Run pub get to install the dependencies :
