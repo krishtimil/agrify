@@ -9,9 +9,9 @@ Agrify aims to act as a brigde between agriculture and technology. Our aim is to
 
 ## Contributors 👨‍💻
 ```
-Nishant Pokhrel             
-Krishant Timilsina   
-Sushill Adhikari
+Krishant Timilsina          (@krishtimil)
+Nishant Pokhrel             (@i-maple)            
+Sushill Adhikari            (@sushiladh2059)
 ```
 
 ## Localised Language
