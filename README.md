@@ -1,4 +1,7 @@
-# Team-NKS
+# Agrify 
+### Agriculture Simplified
+
+<br>
 
 A comprehensive solution for farmers and people who want to grow on land, which aims to empower farmers by educating them & helping them make imformed decisions that increases their income.
 
@@ -11,10 +14,24 @@ Krishant Timilsina
 Sushill Adhikari
 ```
 
-## Screenshot
-![](agrify/assets/screen.png )
-![](agrify/assets/screen1.png )
-![](agrify/assets/screen2.png )
+## Localised Language
+
+This app supports Nepali Language to make it accessible for wide variety of farmers.
+<br>
+<center><img src="agrify/assets/screens/language_crop.png" width="500" /></center>
+
+<br>
+
+## Screenshots
+<p float="left">
+  <img src="agrify/assets/screens/screen.png" width="100" />
+  <img src="agrify/assets/screens/screen1.png" width="100" /> 
+  <img src="agrify/assets/screens/screen2.png" width="100" />
+  <img src="agrify/assets/screens/screen3.png" width="100" />
+  <img src="agrify/assets/screens/screen4.png" width="100" />
+
+
+</p>
 
 
 
