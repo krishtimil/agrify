@@ -21,11 +21,14 @@ class _YardPlannerState extends State<YardPlanner> {
 
   late TextEditingController _nameController;
 
+  late TextEditingController _chemicalController;
+
   @override
   void initState() {
     _widthController = TextEditingController();
     _heightController = TextEditingController();
     _nameController = TextEditingController();
+    _chemicalController = TextEditingController();
     super.initState();
   }
 
@@ -93,21 +96,27 @@ class _YardPlannerState extends State<YardPlanner> {
                   return Column(
                     children: snapData
                         .map(
-                          ((e) => ListTile(
-                                title: Text(e.get('name')),
-                                trailing: IconButton(
-                                  icon:const Icon(
-                                    Icons.arrow_forward_ios_rounded,
-                                  ),
-                                  onPressed: () {
-                                    Navigator.push(
+                          ((e) => Card(
+                            child: ListTile(
+                                  title: Text(e.get('name'), style: TextStyle(color: Colors.black),),
+                                  trailing: IconButton(
+                                    icon: const Icon(
+                                      Icons.arrow_forward_ios_rounded,
+                                      color: Colors.black,
+                                    ),
+                                    onPressed: () {
+                                      Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: ((context) =>
-                                                GuideScreen(crops: e.get('items'),)),),);
-                                  },
+                                          builder: ((context) => GuideScreen(
+                                                crops: e.get('items'),
+                                              )),
+                                        ),
+                                      );
+                                    },
+                                  ),
                                 ),
-                              )),
+                          )),
                         )
                         .toList(),
                   );
@@ -163,6 +172,13 @@ class _YardPlannerState extends State<YardPlanner> {
                     placeholder: 'Length (In Yards)',
                     borderColor: Colors.black,
                     controller: _heightController,
+                    keyboardType: TextInputType.number,
+                  ),
+                  spacer(height: 10),
+                  TextInputField(
+                    placeholder: 'Notable Chemical Composition',
+                    borderColor: Colors.black,
+                    controller: _chemicalController,
                     keyboardType: TextInputType.number,
                   ),
                   spacer(height: 20),
