@@ -202,30 +202,6 @@ class _HomePageState extends State<HomePage> {
 
   bool isSwitched = false;
 
-  void toggleSwitch(bool value) async {
-    if (isSwitched == false) {
-      setState(() {
-        isSwitched = true;
-        SharedPrefs().setBoolean(true);
-      });
-    } else {
-      setState(() {
-        isSwitched = false;
-        SharedPrefs().setBoolean(false);
-      });
-    }
-  }
-
-  @override
-  void initState() {
-    langManager();
-    super.initState();
-  }
-
-  langManager() async {
-    getlang = await SharedPrefs().getLang;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -273,10 +249,11 @@ class _HomePageState extends State<HomePage> {
                   child: Row(children: [
                     widget.isLoggedIn
                         ? GestureDetector(
-                            child: CircleAvatar(),
+                            child: Icon(Icons.logout),
                             onTap: () async {
                               await FirebaseAuth.instance.signOut();
                               Navigator.pushReplacementNamed(context, '/login');
+                              showSnackbar('Logged Out', context);
                             })
                         : IconButton(
                             onPressed: () {
@@ -287,14 +264,16 @@ class _HomePageState extends State<HomePage> {
                               color: Colors.white,
                             ),
                           ),
-                    Switch(
-                      onChanged: toggleSwitch,
-                      value: isSwitched,
-                      activeColor: Colors.blue,
-                      activeTrackColor: Colors.yellow,
-                      inactiveThumbColor: Colors.redAccent,
-                      inactiveTrackColor: Colors.orange,
-                    )
+                    IconButton(
+                        onPressed: () {
+                          setState(() {
+                            getlang = !getlang;
+                          });
+                        },
+                        icon: Icon(
+                          Icons.language,
+                          color: Colors.white,
+                        )),
                   ]),
                 )
               ],
