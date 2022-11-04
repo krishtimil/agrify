@@ -18,7 +18,7 @@ Sushill Adhikari            (@sushiladh2059)
 
 This app supports Nepali Language to make it accessible for wide variety of farmers.
 <br>
-<center><img src="agrify/assets/screens/language_crop.png" width="500" /></center>
+<center><img src="agrify/assets/screens/language_crop.png" width="500" />
 <br>
 
 ## Screenshots
@@ -31,6 +31,7 @@ This app supports Nepali Language to make it accessible for wide variety of farm
 
 
 </p>
+</center>
 
 
 
